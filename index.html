@@ -1,634 +1,869 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>دعوة زفاف محمد و ريان</title>
-
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&family=Amiri:wght@400;700&display=swap');
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    font-family: "Cairo", sans-serif;
-    background: #f8f2ec;
-    color: #4a3832;
-    overflow-x: hidden;
-}
-
-/* =========================
-   الخلفية
-========================= */
-
-.hero {
-    min-height: 100vh;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-
-    background:
-        linear-gradient(
-            rgba(255,248,241,0.72),
-            rgba(247,232,221,0.86)
-        ),
-        url("https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=2000&q=90");
-
-    background-size: cover;
-    background-position: center;
-}
-
-.hero::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-
-    background:
-        radial-gradient(circle at 20% 20%, rgba(255,255,255,.8), transparent 25%),
-        radial-gradient(circle at 80% 80%, rgba(255,215,190,.35), transparent 30%);
-}
-
-/* =========================
-   الورود
-========================= */
-
-.flower {
-    position: absolute;
-    font-size: 45px;
-    opacity: .7;
-    animation: floatFlower linear infinite;
-    pointer-events: none;
-}
-
-.flower:nth-child(1) {
-    left: 7%;
-    top: 10%;
-    animation-duration: 9s;
-}
-
-.flower:nth-child(2) {
-    left: 88%;
-    top: 18%;
-    animation-duration: 11s;
-}
-
-.flower:nth-child(3) {
-    left: 13%;
-    bottom: 12%;
-    animation-duration: 13s;
-}
-
-.flower:nth-child(4) {
-    right: 8%;
-    bottom: 15%;
-    animation-duration: 10s;
-}
-
-@keyframes floatFlower {
-    0%,100% {
-        transform: translateY(0) rotate(0deg);
-    }
-
-    50% {
-        transform: translateY(-30px) rotate(15deg);
-    }
-}
-
-/* =========================
-   البطاقة
-========================= */
-
-.card {
-    position: relative;
-    z-index: 5;
-
-    width: min(90%, 720px);
-    padding: 70px 35px;
-
-    text-align: center;
-
-    background: rgba(255,255,255,.72);
-    backdrop-filter: blur(15px);
-
-    border: 1px solid rgba(255,255,255,.8);
-
-    border-radius: 35px;
-
-    box-shadow:
-        0 30px 80px rgba(90,55,40,.20),
-        inset 0 0 40px rgba(255,255,255,.35);
-
-    animation: cardIn 1.5s ease;
-}
-
-@keyframes cardIn {
-    from {
-        opacity: 0;
-        transform: translateY(70px) scale(.92);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
-}
-
-.small-title {
-    font-size: 17px;
-    letter-spacing: 4px;
-    color: #a77762;
-    margin-bottom: 15px;
-}
-
-.invitation {
-    font-family: "Amiri", serif;
-    font-size: 25px;
-    margin-bottom: 20px;
-}
-
-.names {
-    font-family: "Amiri", serif;
-    font-size: clamp(55px, 10vw, 90px);
-    color: #795548;
-    line-height: 1.1;
-
-    text-shadow:
-        2px 3px 0 rgba(255,255,255,.8);
-
-    animation: namesGlow 3s ease-in-out infinite;
-}
-
-@keyframes namesGlow {
-    0%,100% {
-        text-shadow: 2px 3px 0 rgba(255,255,255,.8);
-    }
-
-    50% {
-        text-shadow:
-            0 0 20px rgba(170,120,95,.25),
-            2px 3px 0 rgba(255,255,255,.8);
-    }
-}
-
-.and {
-    font-family: "Amiri", serif;
-    font-size: 35px;
-    color: #b88b76;
-    margin: 10px 0;
-}
-
-.line {
-    width: 120px;
-    height: 1px;
-    background: #b99583;
-    margin: 25px auto;
-}
-
-.date {
-    font-size: 24px;
-    font-weight: 600;
-    color: #765447;
-}
-
-.day {
-    font-size: 18px;
-    color: #a47764;
-    margin-top: 5px;
-}
-
-.message {
-    max-width: 520px;
-    margin: 25px auto;
-    line-height: 2;
-    font-size: 16px;
-    color: #6b5750;
-}
-
-/* =========================
-   الزر
-========================= */
-
-.button {
-    display: inline-block;
-    margin-top: 15px;
-    padding: 13px 32px;
-
-    color: white;
-    text-decoration: none;
-
-    border-radius: 50px;
-
-    background: linear-gradient(
-        135deg,
-        #a98270,
-        #78584b
-    );
-
-    box-shadow: 0 10px 25px rgba(110,75,60,.25);
-
-    transition: .3s;
-}
-
-.button:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 15px 35px rgba(110,75,60,.35);
-}
-
-/* =========================
-   عداد الوقت
-========================= */
-
-.countdown {
-    display: flex;
-    justify-content: center;
-    gap: 12px;
-    margin-top: 30px;
-    flex-wrap: wrap;
-}
-
-.time-box {
-    width: 75px;
-    padding: 12px 5px;
-
-    background: rgba(255,255,255,.7);
-
-    border-radius: 15px;
-
-    box-shadow: 0 5px 20px rgba(80,50,40,.08);
-}
-
-.time-box span {
-    display: block;
-    font-size: 25px;
-    font-weight: bold;
-    color: #795548;
-}
-
-.time-box small {
-    color: #9c7a6b;
-}
-
-/* =========================
-   القلوب
-========================= */
-
-.heart {
-    position: fixed;
-    bottom: -30px;
-    pointer-events: none;
-    z-index: 20;
-
-    animation: heartUp 5s linear forwards;
-}
-
-@keyframes heartUp {
-    0% {
-        opacity: 0;
-        transform: translateY(0) scale(.5) rotate(0);
-    }
-
-    15% {
-        opacity: 1;
-    }
-
-    100% {
-        opacity: 0;
-        transform:
-            translateY(-110vh)
-            translateX(80px)
-            scale(1.4)
-            rotate(30deg);
-    }
-}
-
-/* =========================
-   الجوال
-========================= */
-
-@media(max-width:600px) {
-
-    .card {
-        padding: 55px 20px;
-    }
-
-    .names {
-        font-size: 58px;
-    }
-
-    .invitation {
-        font-size: 21px;
-    }
-
-    .message {
-        font-size: 14px;
-    }
-
-    .time-box {
-        width: 65px;
-    }
-}
-
-/* =========================
-   شاشة البداية
-========================= */
-
-.loading {
-    position: fixed;
-    inset: 0;
-    z-index: 999;
-
-    background: #f8f2ec;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    transition: opacity 1s ease, visibility 1s ease;
-}
-
-.loading.hide {
-    opacity: 0;
-    visibility: hidden;
-}
-
-.loading-heart {
-    font-size: 65px;
-    animation: heartbeat 1s infinite;
-}
-
-@keyframes heartbeat {
-    0%,100% {
-        transform: scale(1);
-    }
-
-    50% {
-        transform: scale(1.3);
-    }
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>إلى محمد ❤️</title>
+
+    <style>
+
+        @import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@300;400;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            overflow-x: hidden;
+
+            font-family: "Cairo", sans-serif;
+
+            background:
+                radial-gradient(circle at 20% 20%, #fff5f7, transparent 30%),
+                radial-gradient(circle at 80% 80%, #ffe1e8, transparent 30%),
+                linear-gradient(135deg, #fff7f8, #f8e4e8);
+
+            color: #59383f;
+        }
+
+
+        /* =========================
+           شاشة البداية
+        ========================= */
+
+        .intro {
+            position: fixed;
+            inset: 0;
+
+            z-index: 1000;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #fff7f8,
+                    #f6dce2
+                );
+
+            transition: 1.2s ease;
+        }
+
+        .intro.hide {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .intro-heart {
+            font-size: 80px;
+
+            animation:
+                heartbeat 1.2s infinite,
+                glow 2s infinite alternate;
+        }
+
+        .intro h2 {
+            margin-top: 20px;
+
+            font-family: "Amiri", serif;
+
+            font-size: 30px;
+            color: #8c4f5e;
+        }
+
+
+        @keyframes heartbeat {
+
+            0%, 100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.25);
+            }
+
+        }
+
+
+        @keyframes glow {
+
+            from {
+                filter: drop-shadow(0 0 5px #ffb7c5);
+            }
+
+            to {
+                filter: drop-shadow(0 0 25px #ff8fa8);
+            }
+
+        }
+
+
+        /* =========================
+           الخلفية المتحركة
+        ========================= */
+
+        .background-heart {
+            position: fixed;
+
+            bottom: -50px;
+
+            pointer-events: none;
+
+            animation: floatHeart linear forwards;
+
+            opacity: 0;
+        }
+
+
+        @keyframes floatHeart {
+
+            0% {
+                opacity: 0;
+                transform:
+                    translateY(0)
+                    rotate(0deg)
+                    scale(.5);
+            }
+
+            15% {
+                opacity: .8;
+            }
+
+            100% {
+                opacity: 0;
+
+                transform:
+                    translateY(-110vh)
+                    translateX(100px)
+                    rotate(40deg)
+                    scale(1.5);
+            }
+
+        }
+
+
+        /* =========================
+           الصفحة
+        ========================= */
+
+        .page {
+            min-height: 100vh;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            padding: 50px 20px;
+
+            position: relative;
+        }
+
+
+        /* =========================
+           الرسالة
+        ========================= */
+
+        .letter {
+
+            position: relative;
+
+            width: min(92%, 720px);
+
+            padding: 60px 45px;
+
+            text-align: center;
+
+            background:
+                rgba(255, 255, 255, .78);
+
+            backdrop-filter: blur(18px);
+
+            border: 1px solid rgba(255,255,255,.9);
+
+            border-radius: 35px;
+
+            box-shadow:
+                0 30px 80px rgba(120,60,75,.18),
+                inset 0 0 50px rgba(255,255,255,.5);
+
+            animation: letterIn 1.5s ease;
+
+            overflow: hidden;
+        }
+
+
+        @keyframes letterIn {
+
+            from {
+                opacity: 0;
+
+                transform:
+                    translateY(80px)
+                    scale(.9);
+            }
+
+            to {
+                opacity: 1;
+
+                transform:
+                    translateY(0)
+                    scale(1);
+            }
+
+        }
+
+
+        /* زخرفة */
+
+        .corner {
+            position: absolute;
+
+            font-size: 55px;
+
+            opacity: .45;
+        }
+
+        .corner.top {
+            top: 15px;
+            right: 20px;
+        }
+
+        .corner.bottom {
+            bottom: 15px;
+            left: 20px;
+        }
+
+
+        /* =========================
+           العنوان
+        ========================= */
+
+        .to {
+            font-size: 17px;
+
+            letter-spacing: 3px;
+
+            color: #b26c7b;
+
+            margin-bottom: 15px;
+        }
+
+
+        .name {
+
+            font-family: "Amiri", serif;
+
+            font-size: clamp(65px, 13vw, 105px);
+
+            color: #914f61;
+
+            line-height: 1;
+
+            text-shadow:
+                2px 3px 0 white,
+                0 0 25px rgba(220,110,135,.18);
+
+            animation: nameGlow 3s infinite alternate;
+        }
+
+
+        @keyframes nameGlow {
+
+            from {
+                transform: scale(1);
+            }
+
+            to {
+                transform: scale(1.03);
+            }
+
+        }
+
+
+        .subtitle {
+
+            margin-top: 15px;
+
+            font-family: "Amiri", serif;
+
+            font-size: 25px;
+
+            color: #a66a78;
+        }
+
+
+        .line {
+
+            width: 140px;
+
+            height: 2px;
+
+            margin: 30px auto;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    transparent,
+                    #c78392,
+                    transparent
+                );
+        }
+
+
+        /* =========================
+           الرسالة
+        ========================= */
+
+        .message {
+
+            font-family: "Amiri", serif;
+
+            font-size: 23px;
+
+            line-height: 2.1;
+
+            color: #5e4148;
+
+            text-align: right;
+
+            min-height: 380px;
+        }
+
+
+        .message span {
+            opacity: 0;
+
+            display: block;
+
+            transform: translateY(10px);
+
+            animation:
+                textAppear .8s forwards;
+        }
+
+
+        @keyframes textAppear {
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+        }
+
+
+        /* =========================
+           التوقيع
+        ========================= */
+
+        .signature {
+
+            margin-top: 30px;
+
+            font-family: "Amiri", serif;
+
+            font-size: 28px;
+
+            color: #985668;
+        }
+
+
+        .signature-heart {
+
+            display: inline-block;
+
+            animation: heartbeat 1.2s infinite;
+        }
+
+
+        /* =========================
+           الزر
+        ========================= */
+
+        .love-button {
+
+            margin-top: 30px;
+
+            border: none;
+
+            padding: 15px 38px;
+
+            border-radius: 50px;
+
+            cursor: pointer;
+
+            color: white;
+
+            font-family: "Cairo", sans-serif;
+
+            font-size: 16px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #bd7182,
+                    #8e4c5e
+                );
+
+            box-shadow:
+                0 12px 30px rgba(140,70,90,.25);
+
+            transition: .3s;
+        }
+
+
+        .love-button:hover {
+
+            transform: translateY(-5px) scale(1.03);
+
+            box-shadow:
+                0 18px 40px rgba(140,70,90,.35);
+        }
+
+
+        .love-button:active {
+
+            transform: scale(.95);
+        }
+
+
+        /* =========================
+           قلوب عند الضغط
+        ========================= */
+
+        .pop-heart {
+
+            position: fixed;
+
+            pointer-events: none;
+
+            z-index: 999;
+
+            animation:
+                popHeart 2.5s ease forwards;
+        }
+
+
+        @keyframes popHeart {
+
+            0% {
+                opacity: 1;
+
+                transform:
+                    translate(0,0)
+                    scale(.4)
+                    rotate(0);
+            }
+
+            100% {
+
+                opacity: 0;
+
+                transform:
+                    translate(
+                        calc(-100px + 200px * var(--random)),
+                        -300px
+                    )
+                    scale(1.4)
+                    rotate(40deg);
+            }
+
+        }
+
+
+        /* =========================
+           نجوم
+        ========================= */
+
+        .sparkle {
+
+            position: fixed;
+
+            pointer-events: none;
+
+            color: #d994a4;
+
+            animation: sparkle 1.5s forwards;
+        }
+
+
+        @keyframes sparkle {
+
+            0% {
+                opacity: 0;
+                transform: scale(0);
+            }
+
+            50% {
+                opacity: 1;
+                transform: scale(1.5);
+            }
+
+            100% {
+                opacity: 0;
+                transform: scale(0);
+            }
+
+        }
+
+
+        /* =========================
+           الجوال
+        ========================= */
+
+        @media(max-width:600px) {
+
+            .letter {
+                padding: 50px 23px;
+            }
+
+            .name {
+                font-size: 70px;
+            }
+
+            .message {
+                font-size: 20px;
+                line-height: 2;
+            }
+
+            .intro h2 {
+                font-size: 24px;
+            }
+
+        }
+
+    </style>
 </head>
+
 
 <body>
 
-<!-- شاشة البداية -->
 
-<div class="loading" id="loading">
-    <div class="loading-heart">🤍</div>
-</div>
+    <!-- شاشة البداية -->
 
+    <div class="intro" id="intro">
 
-<section class="hero">
-
-    <!-- الزهور -->
-
-    <div class="flower">🌸</div>
-    <div class="flower">🌷</div>
-    <div class="flower">🌸</div>
-    <div class="flower">🌷</div>
-
-
-    <!-- بطاقة الدعوة -->
-
-    <div class="card">
-
-        <div class="small-title">
-            بِسْمِ اللهِ الرَّحْمَنِ الرَّحِيمِ
+        <div class="intro-heart">
+            ❤️
         </div>
 
-        <div class="invitation">
-            بكل الحب والسعادة ندعوكم لمشاركتنا فرحتنا
-        </div>
-
-        <div class="line"></div>
-
-        <div class="names">
-            محمد
-        </div>
-
-        <div class="and">
-            &
-        </div>
-
-        <div class="names">
-            ريان
-        </div>
-
-        <div class="line"></div>
-
-        <div class="day">
-            يوم الخميس
-        </div>
-
-        <div class="date">
-            1 / 10
-        </div>
-
-        <p class="message">
-            وجودكم معنا في هذه الليلة الجميلة
-            هو أجمل هدية يمكن أن نحظى بها.
-            <br>
-            ننتظركم لنحتفل معًا ببداية حكاية جديدة
-            مليئة بالحب والفرح 🤍
-        </p>
-
-        <div class="countdown">
-
-            <div class="time-box">
-                <span id="days">00</span>
-                <small>يوم</small>
-            </div>
-
-            <div class="time-box">
-                <span id="hours">00</span>
-                <small>ساعة</small>
-            </div>
-
-            <div class="time-box">
-                <span id="minutes">00</span>
-                <small>دقيقة</small>
-            </div>
-
-            <div class="time-box">
-                <span id="seconds">00</span>
-                <small>ثانية</small>
-            </div>
-
-        </div>
-
-        <a href="#" class="button" onclick="createHearts(); return false;">
-            🤍 نحتفل سوا 🤍
-        </a>
+        <h2>
+            عندي رسالة لشخص مميز...
+        </h2>
 
     </div>
 
-</section>
 
 
-<script>
+    <!-- الصفحة -->
 
-/* =====================================
-   إخفاء شاشة البداية
-===================================== */
+    <main class="page">
 
-window.addEventListener("load", () => {
+        <div class="letter">
 
-    setTimeout(() => {
+            <div class="corner top">
+                🌸
+            </div>
 
-        document
-            .getElementById("loading")
-            .classList.add("hide");
-
-    }, 1200);
-
-});
+            <div class="corner bottom">
+                🌷
+            </div>
 
 
-/* =====================================
-   العداد
-===================================== */
-
-/*
-   غيّر السنة هنا إذا كان المقصود
-   1 أكتوبر من سنة أخرى.
-
-   حاليًا تم ضبطه على:
-   1 أكتوبر 2026
-*/
-
-const weddingDate =
-    new Date("October 1, 2026 20:00:00").getTime();
+            <div class="to">
+                إلى أجمل إنسانة في قلبي
+            </div>
 
 
-function updateCountdown() {
-
-    const now = new Date().getTime();
-
-    const distance = weddingDate - now;
+            <div class="name">
+                محمد
+            </div>
 
 
-    if (distance <= 0) {
-
-        document.getElementById("days").innerText = "00";
-        document.getElementById("hours").innerText = "00";
-        document.getElementById("minutes").innerText = "00";
-        document.getElementById("seconds").innerText = "00";
-
-        return;
-    }
+            <div class="subtitle">
+                عروستي وحبيبتي ❤️
+            </div>
 
 
-    const days =
-        Math.floor(distance / (1000 * 60 * 60 * 24));
+            <div class="line"></div>
 
-    const hours =
-        Math.floor(
-            (distance % (1000 * 60 * 60 * 24))
-            / (1000 * 60 * 60)
+
+            <div class="message" id="message">
+
+                <!-- JavaScript سيكتب الرسالة هنا -->
+
+            </div>
+
+
+            <div class="signature">
+
+                أحبك أكثر مما تتخيلين
+
+                <span class="signature-heart">
+                    ❤️
+                </span>
+
+            </div>
+
+
+            <button
+                class="love-button"
+                onclick="sendLove()">
+
+                اضغطي هنا إذا بتحبيني ❤️
+
+            </button>
+
+        </div>
+
+    </main>
+
+
+
+    <script>
+
+
+        /* =================================
+           شاشة البداية
+        ================================= */
+
+        window.addEventListener("load", function() {
+
+            setTimeout(function() {
+
+                document
+                    .getElementById("intro")
+                    .classList.add("hide");
+
+            }, 2200);
+
+        });
+
+
+
+        /* =================================
+           الرسالة
+        ================================= */
+
+        const lines = [
+
+            "محمد... ❤️",
+
+            "من بين كل الناس، قلبي اختارك إنتِ.",
+
+            "ويمكن مهما حاولت أوصفلك شو يعني وجودك بحياتي، ما رح ألاقي كلام يكفي يوصف اللي جواتي.",
+
+            "إنتِ مو بس حبيبتي... إنتِ الشخص اللي بوجوده بتصير أيامي أحلى، وضحكتي أصدق، وكل لحظة عادية بتتحول لذكرى حلوة.",
+
+            "بحب تفاصيلك الصغيرة قبل الكبيرة، بحب ضحكتك، كلامك، طريقتك، وحتى الأشياء اللي يمكن إنتِ ما تنتبهي إلها... أنا بحفظها بقلبي.",
+
+            "محمد، إنتِ مو مجرد شخص أحبه... إنتِ الشخص اللي بتمنى أكمل معه كل أيامي.",
+
+            "ولو خيروني ألف مرة، كل مرة رح أختارك إنتِ.",
+
+            "وعد مني إني أضل أحبك، وأضل أختارك كل يوم، وأضل أشوفك أجمل صدفة وأحلى نصيب بحياتي.",
+
+            "أحبك يا محمد... يا عروستي، يا حبيبتي، ويا أجمل شيء صار بقلبي. ❤️"
+
+        ];
+
+
+        const message =
+            document.getElementById("message");
+
+
+        lines.forEach((line, index) => {
+
+            const span =
+                document.createElement("span");
+
+            span.innerHTML = line;
+
+            span.style.animationDelay =
+                (index * 0.8 + 1) + "s";
+
+            message.appendChild(span);
+
+        });
+
+
+
+        /* =================================
+           قلوب الخلفية
+        ================================= */
+
+        const heartTypes = [
+            "❤️",
+            "💕",
+            "💗",
+            "💖",
+            "🤍",
+            "🌸"
+        ];
+
+
+        function createBackgroundHeart() {
+
+            const heart =
+                document.createElement("div");
+
+            heart.className =
+                "background-heart";
+
+            heart.innerHTML =
+                heartTypes[
+                    Math.floor(
+                        Math.random() *
+                        heartTypes.length
+                    )
+                ];
+
+            heart.style.left =
+                Math.random() * 100 + "vw";
+
+            heart.style.fontSize =
+                (15 + Math.random() * 25) + "px";
+
+            heart.style.animationDuration =
+                (5 + Math.random() * 5) + "s";
+
+            document.body.appendChild(heart);
+
+
+            setTimeout(() => {
+
+                heart.remove();
+
+            }, 10000);
+
+        }
+
+
+        setInterval(
+            createBackgroundHeart,
+            700
         );
 
-    const minutes =
-        Math.floor(
-            (distance % (1000 * 60 * 60))
-            / (1000 * 60)
+
+
+        /* =================================
+           زر الحب ❤️
+        ================================= */
+
+        function sendLove() {
+
+            for(let i = 0; i < 30; i++) {
+
+                setTimeout(() => {
+
+                    const heart =
+                        document.createElement("div");
+
+                    heart.className =
+                        "pop-heart";
+
+                    heart.innerHTML =
+                        heartTypes[
+                            Math.floor(
+                                Math.random() *
+                                heartTypes.length
+                            )
+                        ];
+
+                    heart.style.left =
+                        (35 + Math.random() * 30) + "vw";
+
+                    heart.style.top =
+                        (45 + Math.random() * 20) + "vh";
+
+                    heart.style.fontSize =
+                        (18 + Math.random() * 30) + "px";
+
+                    heart.style.setProperty(
+                        "--random",
+                        Math.random()
+                    );
+
+                    document.body.appendChild(
+                        heart
+                    );
+
+
+                    setTimeout(() => {
+
+                        heart.remove();
+
+                    }, 3000);
+
+                }, i * 60);
+
+            }
+
+
+            /* رسالة مفاجئة */
+
+            setTimeout(() => {
+
+                alert(
+                    "بحبك يا محمد ❤️\n\n" +
+                    "أكثر مما تقدر الكلمات تحكي."
+                );
+
+            }, 900);
+
+        }
+
+
+
+        /* =================================
+           لمعات عشوائية
+        ================================= */
+
+        function sparkle() {
+
+            const star =
+                document.createElement("div");
+
+            star.className =
+                "sparkle";
+
+            star.innerHTML = "✦";
+
+            star.style.left =
+                Math.random() * 100 + "vw";
+
+            star.style.top =
+                Math.random() * 100 + "vh";
+
+            star.style.fontSize =
+                (10 + Math.random() * 15) + "px";
+
+            document.body.appendChild(star);
+
+
+            setTimeout(() => {
+
+                star.remove();
+
+            }, 1500);
+
+        }
+
+
+        setInterval(
+            sparkle,
+            500
         );
 
-    const seconds =
-        Math.floor(
-            (distance % (1000 * 60))
-            / 1000
-        );
 
-
-    document.getElementById("days").innerText =
-        String(days).padStart(2, "0");
-
-    document.getElementById("hours").innerText =
-        String(hours).padStart(2, "0");
-
-    document.getElementById("minutes").innerText =
-        String(minutes).padStart(2, "0");
-
-    document.getElementById("seconds").innerText =
-        String(seconds).padStart(2, "0");
-}
-
-
-updateCountdown();
-
-setInterval(updateCountdown, 1000);
-
-
-/* =====================================
-   قلوب متحركة
-===================================== */
-
-function createHeart() {
-
-    const heart = document.createElement("div");
-
-    heart.className = "heart";
-
-    const hearts = [
-        "🤍",
-        "♡",
-        "💗",
-        "🌸",
-        "✨"
-    ];
-
-    heart.innerHTML =
-        hearts[Math.floor(Math.random() * hearts.length)];
-
-    heart.style.left =
-        Math.random() * 100 + "vw";
-
-    heart.style.fontSize =
-        (15 + Math.random() * 25) + "px";
-
-    heart.style.animationDuration =
-        (4 + Math.random() * 4) + "s";
-
-    document.body.appendChild(heart);
-
-
-    setTimeout(() => {
-        heart.remove();
-    }, 8000);
-}
-
-
-/* قلوب تلقائية */
-
-setInterval(createHeart, 900);
-
-
-/* =====================================
-   عند الضغط على الزر
-===================================== */
-
-function createHearts() {
-
-    for (let i = 0; i < 20; i++) {
-
-        setTimeout(() => {
-            createHeart();
-        }, i * 100);
-    }
-
-}
-
-</script>
+    </script>
 
 </body>
 </html>
